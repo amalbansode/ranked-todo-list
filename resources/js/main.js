@@ -4,7 +4,8 @@ var data = (localStorage.getItem('todoList')) ? JSON.parse(localStorage.getItem(
   due: [],
   progress: [],
   difficulty: [],
-  score: []
+  score: [],
+  len: 0
 };
 
 // Remove and complete icons in SVG format
@@ -76,14 +77,15 @@ function addItem (title, due, progress, difficulty, score) {
   data.progress.push(progress);
   data.difficulty.push(difficulty);
   data.score.push(score);
+  ++data.len;
 
   dataObjectUpdated();
 }
 
 function renderTodoList() {
-  if (!data.title.length) return;
+  if (!data.len) return;
 
-  for (var i = 0; i < data.title.length; i++) {
+  for (var i = 0; i < data.len; i++) {
     var title = data.title[i];
     var due = data.due[i];
     var progress = data.progress[i];
@@ -109,6 +111,7 @@ function removeItem() {
     data.progress.splice(data.progress.indexOf(value), 1);
     data.difficulty.splice(data.difficulty.indexOf(value), 1);
     data.score.splice(data.score.indexOf(value), 1);
+  --data.len;
 
   // } else {
     // data.title.splice(data.title.indexOf(value), 1);
