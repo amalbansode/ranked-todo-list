@@ -46,13 +46,9 @@ document.getElementById('add').addEventListener('click', function() {
     return; // abort addition
   }
 
-  var score = ((100 - progress) * 10) / (deltaDays * difficulty);
-  score = score.toPrecision(4);
+  var score = parseFloat(computeScore(due, progress, difficulty));
 
-  console.log(progress);
-  if (title) {
-    addItem(title, due, progress, difficulty, score);
-  }
+  addItem(title, due, progress, difficulty, score);
 });
 
 //document.getElementById('title').addEventListener('keydown', function (e) {
@@ -63,7 +59,6 @@ document.getElementById('add').addEventListener('click', function() {
 //});
 
 function addItem (title, due, progress, difficulty, score) {
-  addItemToDOM(title, due, progress, difficulty, score);
   document.getElementById('title').value = '';
   document.getElementById('due').value = '';
   document.getElementById('progress').value = '';
@@ -77,10 +72,17 @@ function addItem (title, due, progress, difficulty, score) {
   ++data.len;
 
   dataObjectUpdated();
+
+  renderTodoList();
 }
 
 function renderTodoList() {
   if (!data.len) return;
+
+  var list = document.getElementById('todo');
+  list.innerHTML = ''; // clear list momentarily
+
+  sortData();
 
   for (var i = 0; i < data.len; i++) {
     var title = data.title[i];
@@ -142,7 +144,7 @@ function addItemToDOM(title, due, progress, difficulty, score) {
 
   var item = document.createElement('li');
   // create cols for each param
-  item.innerText = title;
+  item.innerText = title + "    " + score;
 
   var buttons = document.createElement('div');
   buttons.classList.add('buttons');
@@ -168,3 +170,50 @@ function addItemToDOM(title, due, progress, difficulty, score) {
 
   list.insertBefore(item, list.childNodes[0]);
 }
+
+function computeScore(due, progress, difficulty) {
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
+  var yyyymmdd = parseInt(yyyy+mm+dd);
+
+  var deltaDays = parseInt(due.replace("-","").replace("-","")) - yyyymmdd;
+
+  var score = ((100 - progress) * 10) / (deltaDays * difficulty);
+  score = parseFloat(score.toPrecision(4));
+  return score;
+}
+
+function sortData() {
+  for (var i = data.len - 1; i >= 0; i--) {
+    data.score[i] = parseFloat(computeScore(data.due[i], data.progress[i], data.difficulty[i]));
+  }
+  // bubble sort according to task score
+  for (var i = 0; i < data.len; i++) {
+      for (var j = 0; j < data.len - i - 1; j++) {
+          if (data.score[j] > data.score[j + 1]) {
+              swapData(j, (j + 1));
+          }
+      }
+  }
+}
+
+function swapData(a, b) {
+  var tempTitle = data.title[a];
+  data.title[a] = data.title[b];
+  data.title[b] = tempTitle;
+
+  var tempProgress = data.progress[a];
+  data.progress[a] = data.progress[b];
+  data.progress[b] = tempProgress;
+
+  var tempDifficulty = data.difficulty[a];
+  data.difficulty[a] = data.difficulty[b];
+  data.difficulty[b] = tempDifficulty;
+
+  var tempScore = data.score[a];
+  data.score[a] = data.score[b];
+  data.score[b] = tempScore;
+}
+
