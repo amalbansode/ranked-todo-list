@@ -8,7 +8,6 @@ var data = (localStorage.getItem('todoList')) ? JSON.parse(localStorage.getItem(
   len: 0
 };
 
-// Remove and complete icons in SVG format
 renderTodoList();
 
 // User clicked on the add button
@@ -22,8 +21,8 @@ document.getElementById('add').addEventListener('click', function() {
 
   var title = document.getElementById('title').value.trim();
   var due = document.getElementById('due').value;
-  var progress = parseInt(document.getElementById('progress').value);
-  var difficulty = parseInt(document.getElementById('difficulty').value);
+  var progress = parseFloat(document.getElementById('progress').value);
+  var difficulty = parseFloat(document.getElementById('difficulty').value);
 
   var deltaDays = parseInt(due.replace("-","").replace("-","")) - yyyymmdd;
   if (deltaDays < 0) {
@@ -83,7 +82,7 @@ function renderTodoList() {
 
   sortData();
 
-  for (var i = 0; i < data.len; i++) {
+  for (var i = 0; i < data.len; ++i) {
     var title = data.title[i];
     var due = data.due[i];
     var progress = data.progress[i];
@@ -167,7 +166,7 @@ function addItemToDOM(title, due, progress, difficulty, score) {
   // buttons.appendChild(complete);
   item.appendChild(buttons);
 
-  list.insertBefore(item, list.childNodes[0]);
+  list.insertBefore(item, list.firstChild);
 }
 
 function computeScore(due, progress, difficulty) {
@@ -179,7 +178,7 @@ function computeScore(due, progress, difficulty) {
 
   var deltaDays = parseInt(due.replace("-","").replace("-","")) - yyyymmdd;
 
-  var score = ((100 - progress) * 10) / (deltaDays * difficulty);
+  var score = (Math.sqrt(100 - progress) / 10) * difficulty / (Math.pow((deltaDays + 1.0), 3));
   score = parseFloat(score.toPrecision(4));
   return score;
 }
@@ -202,6 +201,10 @@ function swapData(a, b) {
   var tempTitle = data.title[a];
   data.title[a] = data.title[b];
   data.title[b] = tempTitle;
+
+  var tempDue = data.due[a];
+  data.due[a] = data.due[b];
+  data.due[b] = tempDue;
 
   var tempProgress = data.progress[a];
   data.progress[a] = data.progress[b];
