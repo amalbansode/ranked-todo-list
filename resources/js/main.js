@@ -103,11 +103,16 @@ function removeItem() {
   var id = parent.id;
   var value = item.innerText;
 
-  if (id === 'todo') {
+  // if (id === 'todo') {
     data.title.splice(data.title.indexOf(value), 1);
-  } else {
-    data.title.splice(data.title.indexOf(value), 1);
-  }
+    data.due.splice(data.due.indexOf(value), 1);
+    data.progress.splice(data.progress.indexOf(value), 1);
+    data.difficulty.splice(data.difficulty.indexOf(value), 1);
+    data.score.splice(data.score.indexOf(value), 1);
+
+  // } else {
+    // data.title.splice(data.title.indexOf(value), 1);
+  // }
   dataObjectUpdated();
 
   parent.removeChild(item);
@@ -141,7 +146,7 @@ function addItemToDOM(title, due, progress, difficulty, score) {
 
   var item = document.createElement('li');
   // create cols for each param
-  item.innerText = title + "\t" + due + "\t" + progress + "\t" + difficulty + "\t" + score;
+  item.innerText = title;
 
   var buttons = document.createElement('div');
   buttons.classList.add('buttons');
