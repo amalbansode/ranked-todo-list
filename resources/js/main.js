@@ -41,8 +41,8 @@ document.getElementById('add').addEventListener('click', function() {
     return; // abort addition
   }
 
-  if (isNaN(difficulty) || difficulty < 0 || difficulty > 5) {
-    window.alert("Please enter the perceived difficulty of the task from 0-5.");
+  if (isNaN(difficulty) || difficulty < 1 || difficulty > 5) {
+    window.alert("Please enter the perceived difficulty of the task from 1-5.");
     return; // abort addition
   }
 
