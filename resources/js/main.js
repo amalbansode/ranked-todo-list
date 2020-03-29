@@ -71,8 +71,6 @@ function addItem (title, due, progress, difficulty, score) {
   data.score.push(score);
   ++data.len;
 
-  dataObjectUpdated();
-
   renderTodoList();
 }
 
@@ -83,6 +81,7 @@ function renderTodoList() {
   list.innerHTML = ''; // clear list momentarily
 
   sortData();
+  dataObjectUpdated(); //  update cookie list now
 
   for (var i = 0; i < data.len; i++) {
     var title = data.title[i];
@@ -144,7 +143,7 @@ function addItemToDOM(title, due, progress, difficulty, score) {
 
   var item = document.createElement('li');
   // create cols for each param
-  item.innerText = title + "    " + score;
+  item.innerText = title;
 
   var buttons = document.createElement('div');
   buttons.classList.add('buttons');
