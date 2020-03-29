@@ -72,6 +72,7 @@ function addItem (title, due, progress, difficulty, score) {
   ++data.len;
 
   renderTodoList();
+  dataObjectUpdated(); //  update cookie list now
 }
 
 function renderTodoList() {
@@ -81,7 +82,6 @@ function renderTodoList() {
   list.innerHTML = ''; // clear list momentarily
 
   sortData();
-  dataObjectUpdated(); //  update cookie list now
 
   for (var i = 0; i < data.len; i++) {
     var title = data.title[i];
@@ -185,7 +185,7 @@ function computeScore(due, progress, difficulty) {
 }
 
 function sortData() {
-  for (var i = data.len - 1; i >= 0; i--) {
+  for (var i = 0; i < data.len; ++i) {
     data.score[i] = parseFloat(computeScore(data.due[i], data.progress[i], data.difficulty[i]));
   }
   // bubble sort according to task score
