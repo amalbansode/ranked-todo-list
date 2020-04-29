@@ -71,7 +71,12 @@ function addItem (title, due, progress, difficulty, score) {
 }
 
 function renderTodoList() {
-  if (!data.len) return;
+  if (!data.len) {
+    document.getElementById('headerRow').style.display = 'none';
+    return;
+  } else {
+    document.getElementById('headerRow').style.display = 'flex';
+  }
 
   var list = document.getElementById('todo');
   list.innerHTML = ''; // clear list momentarily
@@ -149,6 +154,7 @@ function removeItem() {
   dataObjectUpdated();
 
   parent.removeChild(item);
+  renderTodoList();
 };
 
 // Adds a new item to the todo list
