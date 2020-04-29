@@ -98,6 +98,8 @@ function dataObjectUpdated() {
 }
 
 function editItem() {
+  window.scrollTo(0,0); // scroll to top so user can edit params
+
   var item = this.parentNode;
   var parent = item.parentNode;
   var id = parent.id;
