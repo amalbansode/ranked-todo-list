@@ -287,9 +287,26 @@ input[type='radio'] {
 
 .row {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   padding: 0;
   width: 100%;
+
+  /*IMPORTED LI FORMATTING FROM BELOW*/
+  min-height: 3.8rem;
+  /*float: left;*/
+  font-family: 'Google Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 100;
+  color: #444;
+  line-height: 1.5rem;
+
+  background: #fff;
+  border-radius: 5px;
+  position: relative;
+  box-shadow: 0px 1px 2px rgba(44, 62, 80, 0.10);
+  padding: 1.2rem 5.0rem 1.2rem 1.2rem;
+  word-break: break-word;
+  margin-bottom: 1.0rem;
 }
 
 .row.row-no-padding {
@@ -371,6 +388,11 @@ input[type='radio'] {
 .row .column.column-10 {
   flex: 0 0 10%;
   max-width: 10%;
+}
+
+.row .column.column-15 {
+  flex: 0 0 15%;
+  max-width: 15%;
 }
 
 .row .column.column-20 {
@@ -744,13 +766,13 @@ highlight {
 
 /*-------- OG CSS --------*/
 
-ul.todo {
+/*ul.todo {
   width: 100%;
   float: left;
   padding: 0;
-}
+}*/
 
-ul.todo li {
+/*ul.todo li {
 
   display: inline-block;
 
@@ -769,18 +791,37 @@ ul.todo li {
   box-shadow: 0px 1px 2px rgba(44, 62, 80, 0.10);
   padding: 1.2rem 5.0rem 1.2rem 1.2rem;
   word-break: break-word;
-}
+}*/
 
-ul.todo li .buttons {
-  width: 50px;
+
+.editButton {
+  flex: 0 0 10%;
+  max-width: 10%;
   height: 100%;
+  color: green;
+  letter-spacing: 0;
+
+  -moz-transform: scale(-1, 1);
+-webkit-transform: scale(-1, 1);
+-o-transform: scale(-1, 1);
+-ms-transform: scale(-1, 1);
+transform: scale(-1, 1);
+text-align: center;
 }
 
-ul.todo li .buttons button {
+.editButton:hover {
+  cursor: pointer;
+}
+
+.deleteButton {
+  flex: 0 0 10%;
+  max-width: 10%;
   height: 100%;
   color: red;
   letter-spacing: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
+  text-align: center;
+}
+
+.deleteButton:hover {
+  cursor: pointer;
 }
