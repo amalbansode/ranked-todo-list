@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A to-do list that calculates the priority of tasks">
+    <title>Ranked To-Do List</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/style.css">
+</head>
+
+<body>
+    <main class="wrapper">
+        <section class="container">
+            <h3>Ranked To-Do List</h3>
+            <p>Enter the parameters below and the to-do list will rank items for you, with the most important at the top!</p>
+            <hr />
+            <input type="text" placeholder="Activity title" id="title">
+            <input type="date" placeholder="Due date" id="due" style="width:50%; margin-right: 20px;" value="2020-01-01">
+            <input type="number" placeholder="Progress (0-100)" id="progress" style="width:60%; margin-right: 20px;">
+            <input type="number" placeholder="Difficulty (1-5)" id="difficulty" style="width:60%; margin-right: 20px;">
+            <button class="button-outline" style="font-size: 1.4rem; font-weight: 300; padding: 0 1.0rem; line-height: 0rem; letter-spacing: 0; width: 3.8rem; border-radius: 100%; position: absolute; right: 2%;" id="add">+</button>
+            <br />
+            <br />
+            <div class="row" id="headerRow" style="display: none; font-weight: 500;">
+                    <div class="column column-40">Task</div>
+                    <div class="column column-25">Due</div>
+                    <div class="column column-20">Prog.</div>
+                    <!--<div class="column column-15">Difficulty</div>-->
+                </div>
+            <div class="todo" id="todo">
+            </div>
+            <script src="resources/js/main.js"></script>
+        </section>
+    </main>
+</body>
+
+</html>
