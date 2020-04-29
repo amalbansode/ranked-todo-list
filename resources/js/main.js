@@ -10,8 +10,7 @@ var data = (localStorage.getItem('todoList')) ? JSON.parse(localStorage.getItem(
 
 renderTodoList();
 
-// User clicked on the add button
-// If there is any text inside the item field, add that text to the todo list
+// User clicks the add button
 document.getElementById('add').addEventListener('click', function() {
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, '0');
@@ -53,13 +52,6 @@ document.getElementById('add').addEventListener('click', function() {
   document.getElementById('difficulty').disabled = false;
   document.getElementById('difficulty').classList.remove('lock');
 });
-
-//document.getElementById('title').addEventListener('keydown', function (e) {
-//  var value = this.value;
-//  if ((e.code === 'Enter' || e.code === 'NumpadEnter') && value) {
-//    addItem(value, 0, 0, 0);
-//  }
-//});
 
 function addItem (title, due, progress, difficulty, score) {
   document.getElementById('title').value = '';
@@ -163,10 +155,6 @@ function removeItem() {
 function addItemToDOM(title, due, progress, difficulty, score) {
   var list = document.getElementById('todo');
 
-  // var item = document.createElement('li');
-  // // create cols for each param
-  // item.innerText = title;
-
   var item = document.createElement('div');
   item.classList.add('row');
 
@@ -188,6 +176,7 @@ function addItemToDOM(title, due, progress, difficulty, score) {
   item_progress.innerText = progress;
   item.appendChild(item_progress);
 
+  // difficulty should not be editable, so it's hidden as well - can be changed, idk
   // var item_difficulty = document.createElement('div');
   // item_difficulty.classList.add('column');
   // item_difficulty.classList.add('column-15');
