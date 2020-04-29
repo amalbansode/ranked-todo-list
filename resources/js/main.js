@@ -144,13 +144,14 @@ function removeItem() {
   var item = this.parentNode;
   var parent = item.parentNode;
   var id = parent.id;
-  var value = item.firstChild.data;
+  var value = item.firstChild.textContent;
 
-  data.title.splice(data.title.indexOf(value), 1);
-  data.due.splice(data.due.indexOf(value), 1);
-  data.progress.splice(data.progress.indexOf(value), 1);
-  data.difficulty.splice(data.difficulty.indexOf(value), 1);
-  data.score.splice(data.score.indexOf(value), 1);
+  index_of_data = data.title.indexOf(value);
+  data.title.splice(index_of_data, 1);
+  data.due.splice(index_of_data, 1);
+  data.progress.splice(index_of_data, 1);
+  data.difficulty.splice(index_of_data, 1);
+  data.score.splice(index_of_data, 1);
   --data.len;
 
   dataObjectUpdated();
