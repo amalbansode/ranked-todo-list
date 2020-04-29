@@ -26,14 +26,6 @@ html {
 body {
 }
 
-blockquote {
-  border-left: 0.3rem solid #d1d1d1;
-  margin-left: 0;
-  margin-right: 0;
-  padding: 1rem 1.5rem;
-  font-style: italic;
-}
-
 blockquote *:last-child {
   margin-bottom: 0;
 }
@@ -168,30 +160,6 @@ input[type='reset'].button-clear[disabled]:hover,
 input[type='submit'].button-clear[disabled]:focus,
 input[type='submit'].button-clear[disabled]:hover {
   color: #00b894;
-}
-
-code {
-  background: #f4f5f6;
-  border-radius: .4rem;
-  font-family: 'Roboto Mono', 'Source Code Pro', 'Lucida Console', 'Courier', sans-serif;
-  font-size: 86%;
-  font-style: normal;
-  margin: 0 .2rem;
-  padding: .2rem .5rem;
-  white-space: nowrap;
-}
-
-pre {
-  background: #f4f5f6;
-  border-left: 0.3rem solid #00b894;
-  overflow-y: hidden;
-}
-
-pre > code {
-  border-radius: 0;
-  display: block;
-  padding: 1rem 1.5rem;
-  white-space: pre;
 }
 
 hr {
@@ -472,37 +440,6 @@ a:hover {
     font-variant-numeric: lining-nums;
 }
 
-dl,
-ol,
-ul {
-  list-style: none;
-  margin-top: 0;
-  padding-left: 1.0rem;
-    font-variant-numeric: lining-nums;
-}
-
-dl dl,
-dl ol,
-dl ul,
-ol dl,
-ol ol,
-ol ul,
-ul dl,
-ul ol,
-ul ul {
-  font-size: 1.4rem;
-  margin: 1.5rem 0 1.5rem 1.0rem;
-    font-variant-numeric: lining-nums;
-}
-
-ol {
-  list-style: decimal inside;
-}
-
-ul {
-  list-style: none inside;
-}
-
 .button,
 button,
 dd,
@@ -518,43 +455,6 @@ select,
 textarea {
   margin-bottom: 1.5rem;
     font-variant-numeric: lining-nums;
-}
-
-blockquote,
-dl,
-figure,
-form,
-ol,
-p,
-pre,
-table,
-ul {
-  font-family: 'FreightText Pro', 'Georgia', serif;
-  font-size: 1.4rem;
-    font-variant-numeric: lining-nums;
-  margin-bottom: 2.5rem;
-}
-
-table {
-  border-spacing: 0;
-  width: 100%;
-}
-
-td,
-th {
-  border-bottom: 0.1rem solid #d1d1d1;
-  padding: 1.2rem 1.5rem;
-  text-align: left;
-}
-
-td:first-child,
-th:first-child {
-  padding-left: 0;
-}
-
-td:last-child,
-th:last-child {
-  padding-right: 0;
 }
 
 b,
@@ -633,95 +533,6 @@ img {
 
 br {
   font-size: 2.0rem;
-}
-
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  overflow: initial;
-  margin-bottom: 2rem;
-}
-
-.card {
-  max-width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin: 0 0 4.0rem;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 0 15px 35px rgba(50, 50, 90, .1), 0 5px 15px rgba(0, 0, 0, .07);
-  transition: .8s ease;
-}
-
-.card:hover {
-  box-shadow: 0 18px 35px rgba(50, 50, 90, .1), 0 8px 15px rgba(0, 0, 0, .07);
-  transform: translateY(-5px);
-  cursor: pointer;
-}
-
-.card a {
-  text-decoration: none;
-  border-bottom: none;
-  border-radius: 5px;
-}
-
-.card a:hover {
-  text-decoration: none;
-  background: #fff;
-}
-
-.card .card-image {
-  display: block;
-  max-width: 800px;
-  height: auto;
-  width: 100%;
-  border-radius: 5px 5px 0 0;
-  overflow: hidden;
-}
-
-.card .card-content {
-  margin: 0;
-  padding: 0 40px 40px;
-}
-
-.card .card-subheader {
-  margin-top: 40px;
-  margin-bottom: 4px;
-  font-size: 0.8rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  font-feature-settings: "tnum";
-  -webkit-font-feature-settings: "tnum";
-  -moz-font-feature-settings: "tnum"; 
-  font-weight: 100;
-  color: #636e72;
-}
-
-.card .card-header {
-  margin:0;
-  font-size: 1.8rem;
-  letter-spacing: 0.5px;
-  font-weight: bold;
-  color: #636e72;
-}
-
-.card .card-body {
-  margin: 8px 0 0 0;
-  font-size: 1.2rem;
-  letter-spacing: 0.5px;
-  font-weight: 100;
-  color: #636e72;
-}
-
-.viz {
-  width: 90vw;
-  position: relative;
-  left: 40%;
-  right: 40%;
-  margin-left: -40vw;
-  margin-right: -40vw;
-  padding: 5%;
 }
 
 .clearfix:after {
