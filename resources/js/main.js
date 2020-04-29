@@ -173,30 +173,16 @@ function addItemToDOM(title, due, progress, difficulty, score) {
 
   var edit = document.createElement('div');
   edit.classList.add('editButton');
-  edit.innerText = "✎";
+  edit.innerText = "✎"; // used fancy javascript to flip this
 
   var remove = document.createElement('div');
   remove.classList.add('deleteButton');
   remove.innerText = "×";
 
-  // var remove = document.createElement('button');
-  // remove.classList.add('button-clear');
-  // remove.id = "removeItem";
-  // remove.innerText = "×";
-
   // Add click event for removing the item
   edit.addEventListener('click', removeItem);
   remove.addEventListener('click', removeItem);
 
-  // var complete = document.createElement('button');
-  // complete.classList.add('complete');
-  // complete.innerHTML = completeSVG;
-
-  // // Add click event for completing the item
-  // complete.addEventListener('click', completeItem);
-
-  // buttons.appendChild(remove);
-  // // buttons.appendChild(complete);
   item.appendChild(edit);
   item.appendChild(remove);
 
