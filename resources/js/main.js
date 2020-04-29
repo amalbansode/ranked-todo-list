@@ -8,6 +8,14 @@ var data = (localStorage.getItem('todoList')) ? JSON.parse(localStorage.getItem(
   len: 0
 };
 
+//set deadline field to today's date by default
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+var yyyymmdd = yyyy+"-"+mm+"-"+dd;
+document.getElementById('due').defaultValue = yyyymmdd;
+
 renderTodoList();
 
 // User clicks the add button
