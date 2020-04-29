@@ -21,7 +21,7 @@ Now, sitting at home, bored in self-isolation, I thought it would be fun to revi
 in no particular order
 
 - [ ] Dark theme, potentially
-- [ ] Functionality for modifying progress and due date of a task
+- [x] Functionality for modifying progress and due date of a task
 
 ## Credits
 
