@@ -167,68 +167,12 @@ input[type='text']:focus {
   flex-wrap: wrap;
 }
 
-.row.row-top {
-  align-items: flex-start;
-}
-
-.row.row-bottom {
-  align-items: flex-end;
-}
-
-.row.row-center {
-  align-items: center;
-}
-
-.row.row-stretch {
-  align-items: stretch;
-}
-
-.row.row-baseline {
-  align-items: baseline;
-}
-
 .row .column {
   display: block;
   flex: 1 1 auto;
   margin-left: 0;
   max-width: 100%;
   width: 100%;
-}
-
-.row .column.column-offset-10 {
-  margin-left: 10%;
-}
-
-.row .column.column-offset-20 {
-  margin-left: 20%;
-}
-
-.row .column.column-offset-25 {
-  margin-left: 25%;
-}
-
-.row .column.column-offset-33, .row .column.column-offset-34 {
-  margin-left: 33.3333%;
-}
-
-.row .column.column-offset-50 {
-  margin-left: 50%;
-}
-
-.row .column.column-offset-66, .row .column.column-offset-67 {
-  margin-left: 66.6666%;
-}
-
-.row .column.column-offset-75 {
-  margin-left: 75%;
-}
-
-.row .column.column-offset-80 {
-  margin-left: 80%;
-}
-
-.row .column.column-offset-90 {
-  margin-left: 90%;
 }
 
 .row .column.column-10 {
@@ -289,19 +233,6 @@ input[type='text']:focus {
 .row .column.column-90 {
   flex: 0 0 90%;
   max-width: 90%;
-}
-
-.row .column .column-top {
-  align-self: flex-start;
-}
-
-.row .column .column-bottom {
-  align-self: flex-end;
-}
-
-.row .column .column-center {
-  -ms-grid-row-align: center;
-      align-self: center;
 }
 
 a {
