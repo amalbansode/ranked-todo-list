@@ -97,7 +97,7 @@ function dataObjectUpdated() {
 }
 
 function removeItem() {
-  var item = this.parentNode.parentNode;
+  var item = this.parentNode;
   var parent = item.parentNode;
   var id = parent.id;
   var value = item.firstChild.data;
@@ -140,31 +140,65 @@ function removeItem() {
 function addItemToDOM(title, due, progress, difficulty, score) {
   var list = document.getElementById('todo');
 
-  var item = document.createElement('li');
-  // create cols for each param
-  item.innerText = title;
+  // var item = document.createElement('li');
+  // // create cols for each param
+  // item.innerText = title;
 
-  var buttons = document.createElement('div');
-  buttons.classList.add('buttons');
+  var item = document.createElement('div');
+  item.classList.add('row');
 
-  var remove = document.createElement('button');
-  remove.classList.add('button-clear');
-  remove.id = "removeItem";
+  var item_title = document.createElement('div');
+  item_title.classList.add('column');
+  item_title.classList.add('column-40');
+  item_title.innerText = title;
+  item.appendChild(item_title);
+
+  var item_due = document.createElement('div');
+  item_due.classList.add('column');
+  item_due.classList.add('column-25');
+  item_due.innerText = due.substring(5,);
+  item.appendChild(item_due);
+
+  var item_progress = document.createElement('div');
+  item_progress.classList.add('column');
+  item_progress.classList.add('column-20');
+  item_progress.innerText = progress;
+  item.appendChild(item_progress);
+
+  // var item_difficulty = document.createElement('div');
+  // item_difficulty.classList.add('column');
+  // item_difficulty.classList.add('column-15');
+  // item_difficulty.innerText = difficulty;
+  // item.appendChild(item_difficulty);
+
+  var edit = document.createElement('div');
+  edit.classList.add('editButton');
+  edit.innerText = "✎";
+
+  var remove = document.createElement('div');
+  remove.classList.add('deleteButton');
   remove.innerText = "×";
 
+  // var remove = document.createElement('button');
+  // remove.classList.add('button-clear');
+  // remove.id = "removeItem";
+  // remove.innerText = "×";
+
   // Add click event for removing the item
+  edit.addEventListener('click', removeItem);
   remove.addEventListener('click', removeItem);
 
- /* var complete = document.createElement('button');
-  complete.classList.add('complete');
-  complete.innerHTML = completeSVG;
+  // var complete = document.createElement('button');
+  // complete.classList.add('complete');
+  // complete.innerHTML = completeSVG;
 
-  // Add click event for completing the item
-  complete.addEventListener('click', completeItem);*/
+  // // Add click event for completing the item
+  // complete.addEventListener('click', completeItem);
 
-  buttons.appendChild(remove);
-  // buttons.appendChild(complete);
-  item.appendChild(buttons);
+  // buttons.appendChild(remove);
+  // // buttons.appendChild(complete);
+  item.appendChild(edit);
+  item.appendChild(remove);
 
   list.insertBefore(item, list.firstChild);
 }
