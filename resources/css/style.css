@@ -304,7 +304,7 @@ input[type='radio'] {
   border-radius: 5px;
   position: relative;
   box-shadow: 0px 1px 2px rgba(44, 62, 80, 0.10);
-  padding: 1.2rem 5.0rem 1.2rem 1.2rem;
+  padding: 1.2rem;
   word-break: break-word;
   margin-bottom: 1.0rem;
 }
@@ -757,8 +757,7 @@ highlight {
 }
 
 .editButton {
-  flex: 0 0 10%;
-  max-width: 10%;
+  flex: 1 1 auto;
   height: 100%;
   color: green;
   letter-spacing: 0;
@@ -776,8 +775,7 @@ highlight {
 }
 
 .deleteButton {
-  flex: 0 0 10%;
-  max-width: 10%;
+  flex: 1 1 auto;
   height: 100%;
   color: red;
   letter-spacing: 0;
