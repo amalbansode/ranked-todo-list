@@ -48,6 +48,10 @@ document.getElementById('add').addEventListener('click', function() {
   var score = parseFloat(computeScore(due, progress, difficulty));
 
   addItem(title, due, progress, difficulty, score);
+
+  // if locked from editing session, unlock
+  document.getElementById('difficulty').disabled = false;
+  document.getElementById('difficulty').classList.remove('lock');
 });
 
 //document.getElementById('title').addEventListener('keydown', function (e) {
@@ -96,6 +100,46 @@ function dataObjectUpdated() {
   localStorage.setItem('todoList', JSON.stringify(data));
 }
 
+function editItem() {
+  var item = this.parentNode;
+  var parent = item.parentNode;
+  var id = parent.id;
+  var value = item.firstChild.textContent;
+
+  index_of_data = data.title.indexOf(value);
+  title = data.title[index_of_data];
+  due = data.due[index_of_data];
+  progress = data.progress[index_of_data];
+  difficulty = data.difficulty[index_of_data];
+  score = data.score[index_of_data];
+
+  // remove data - potential issue when user edits but doesn't save again - results in loss
+  data.title.splice(index_of_data, 1);
+  data.due.splice(index_of_data, 1);
+  data.progress.splice(index_of_data, 1);
+  data.difficulty.splice(index_of_data, 1);
+  data.score.splice(index_of_data, 1);
+  --data.len;
+
+  var titleInput = document.getElementById('title');
+  titleInput.value = title;
+
+  var dueInput = document.getElementById('due');
+  dueInput.value = due;
+
+  var progressInput = document.getElementById('progress');
+  progressInput.value = progress;
+
+  var difficultyInput = document.getElementById('difficulty');
+  difficultyInput.value = difficulty;
+  difficultyInput.disabled = true; // disable changing difficulty level
+  difficultyInput.classList.add('lock'); // add fancy cursor
+
+  dataObjectUpdated(); // update cookie
+
+  parent.removeChild(item); // removal - could be problematic
+};
+
 function removeItem() {
   var item = this.parentNode;
   var parent = item.parentNode;
@@ -113,28 +157,6 @@ function removeItem() {
 
   parent.removeChild(item);
 };
-
-/*function completeItem() {
-  var item = this.parentNode.parentNode;
-  var parent = item.parentNode;
-  var id = parent.id;
-  var value = item.innerText;
-
-  if (id === 'todo') {
-    data.todo.splice(data.title.indexOf(value), 1);
-    data.title.push(value);
-  } else {
-    data.completed.splice(data.title.indexOf(value), 1);
-    data.title.push(value);
-  }
-  dataObjectUpdated();
-
-  // Check if the item should be added to the completed list or to re-added to the todo list
-  var target = (id === 'todo') ? document.getElementById('completed'):document.getElementById('todo');
-
-  parent.removeChild(item);
-  target.insertBefore(item, target.childNodes[0]);
-}*/
 
 // Adds a new item to the todo list
 function addItemToDOM(title, due, progress, difficulty, score) {
@@ -180,7 +202,7 @@ function addItemToDOM(title, due, progress, difficulty, score) {
   remove.innerText = "×";
 
   // Add click event for removing the item
-  edit.addEventListener('click', removeItem);
+  edit.addEventListener('click', editItem);
   remove.addEventListener('click', removeItem);
 
   item.appendChild(edit);

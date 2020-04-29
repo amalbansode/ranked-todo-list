@@ -787,3 +787,7 @@ highlight {
 .deleteButton:hover {
   cursor: pointer;
 }
+
+.lock:hover {
+  cursor: not-allowed;
+}
