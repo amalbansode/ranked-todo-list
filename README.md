@@ -2,7 +2,7 @@
 
 A to-do list application that calculates the priority of a task to help you decide what to complete first.
 
-Demo: TBD
+[Demo](http://amalbansode.com/pages/projects/ranked-todo/)
 
 ## Why
 
