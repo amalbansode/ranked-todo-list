@@ -229,7 +229,11 @@ function computeScore(due, progress, difficulty) {
 
   var deltaDays = parseInt(due.replace("-","").replace("-","")) - yyyymmdd;
 
-  var score = (Math.sqrt(100 - progress) / 10) * difficulty / (Math.pow((deltaDays + 1.0), 3));
+  var score = 6.0; // default value, because if delta days is < 0, the task is over due, and this indicates that
+
+  if (deltaDays >= 0) // if task isn't overdue, use the cool formula
+    score = (Math.sqrt(100 - progress) / 10) * difficulty / (Math.pow((deltaDays + 1.0), 3));
+
   score = parseFloat(score.toPrecision(4));
   return score;
 }
