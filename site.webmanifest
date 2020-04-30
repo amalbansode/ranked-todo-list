@@ -1,0 +1,14 @@
+{
+    "name": "Ranked To-Do List",
+    "short_name": "Ranked To-Do List",
+    "icons": [
+        {
+            "src": "resources/favicon.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#00b894",
+    "background_color": "#00b894",
+    "display": "standalone"
+}
