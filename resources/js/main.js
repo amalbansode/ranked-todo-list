@@ -8,14 +8,7 @@ var data = (localStorage.getItem('todoList')) ? JSON.parse(localStorage.getItem(
   len: 0
 };
 
-//set deadline field to today's date by default
-var today = new Date();
-var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-var yyyy = today.getFullYear();
-var yyyymmdd = yyyy+"-"+mm+"-"+dd;
-document.getElementById('due').defaultValue = yyyymmdd;
-
+setDeadlineFieldDefault();
 renderTodoList();
 
 // User clicks the add button
@@ -60,6 +53,16 @@ document.getElementById('add').addEventListener('click', function() {
   document.getElementById('difficulty').disabled = false;
   document.getElementById('difficulty').classList.remove('lock');
 });
+
+function setDeadlineFieldDefault () {
+  // set deadline field default value to today's date
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
+  var yyyymmdd = yyyy+"-"+mm+"-"+dd;
+  document.getElementById('due').defaultValue = yyyymmdd;
+}
 
 function addItem (title, due, progress, difficulty, score) {
   document.getElementById('title').value = '';
