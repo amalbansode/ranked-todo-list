@@ -180,6 +180,7 @@ function addItemToDOM(title, due, progress, difficulty, score) {
   var item_title = document.createElement('div');
   item_title.classList.add('column');
   item_title.classList.add('column-40');
+  item_title.style.paddingRight = "5%";
   item_title.innerText = title;
   item.appendChild(item_title);
 
