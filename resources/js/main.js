@@ -54,6 +54,17 @@ document.getElementById('add').addEventListener('click', function() {
   document.getElementById('difficulty').classList.remove('lock');
 });
 
+// Pressing the Enter key triggers an 'add' event
+document.querySelectorAll('input').forEach(item => {
+  item.addEventListener('keydown', function (e) {
+    if (e.code === 'Enter' || e.code === 'NumpadEnter') {
+      document.getElementById('add').click();
+      document.getElementById('title').focus();
+      document.getElementById('title').select();
+    }
+  })
+});
+
 function setDeadlineFieldDefault () {
   // set deadline field default value to today's date
   var today = new Date();
